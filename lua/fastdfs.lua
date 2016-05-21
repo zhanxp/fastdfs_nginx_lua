@@ -73,8 +73,8 @@ function table.contains(table, element)
 end 
 
 if table.contains(image_sizes, area) then 
-    ngx.log(ngx.STDERR, area) 
-    local command = "gm convert " .. originalFile  .. " -resize " .. area .. " -background gray -gravity center -crop " .. area .. " " .. ngx.var.file;  
+    local command = "gm convert -size " .. area .. " " .. originalFile  .. " -resize ".. area .."^ -background lightGray -compose Copy -gravity center -extent " .. area .. " " .. ngx.var.file;
+    ngx.log(ngx.STDERR, command) 
     os.execute(command);  
 end;
 
